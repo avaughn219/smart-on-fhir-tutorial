@@ -17025,10 +17025,10 @@ function completeCodeFlow(params){
 		console.log("headers: " + JSON.stringify(headers));
 		console.log("params: " + JSON.stringify(params));
 		console.log('from provider method');
-		console.log('iss: ' + window.my_iss);
-		console.log('fhirServiceUrl: ' + window.my_fhirServiceUrl);
-		console.log('launch: '+ window.my_launch);
-		console.log('my params: ' + window.my_params);
+		console.log('iss: ' + sessionStorage.getItem("my_iss"));
+		console.log('fhirServiceUrl: ' + sessionStorage.getItem("my_fhirServiceUrl"));
+		console.log('launch: '+ sessionStorage.getItem("my_launch"));
+		console.log('my params: ' + sessionStorage.getItem("my_params"));
 		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
@@ -17392,23 +17392,17 @@ BBClient.authorize = function(params, errback){
 
   var server = urlParam("iss") || urlParam("fhirServiceUrl");
 	try{
-		window.my_iss = urlParam("iss");
-		window.my_fhirServiceUrl = urlParam("fhirServiceUrl");
-		window.my_launch = urlParam("launch");
-		window.my_params = location.search.substr(1);
+		sessionStorage.setItem("my_iss", urlParam("iss"));
+		sessionStorage.setItem("my_fhirServiceUrl", urlParam("my_fhirServiceUrl"));
+		sessionStorage.setItem("my_launch", urlParam("launch"));
+		sessionStorage.setItem("my_params", location.search.substr(1));
 	      console.log("iss: " + urlParam("iss"));
 	      console.log("fhirServiceUrl: " + urlParam("fhirServiceUrl"));
 	      console.log("launch: " + urlParam("launch"));
 	      console.log("params?: " + location.search.substr(1));
 		console.log('done');
-	    window.setTimeout(function handle(iss, url, launch, params) {
-	      console.log("iss: " + iss);
-	      console.log("fhirServiceUrl: " + url);
-	      console.log("launch: " + launch);
-	      console.log("params?: " + params);
-	    }, 65000, urlParam("iss"), urlParam("fhirServiceUrl"), urlParam("launch"), location.search.substr(1));
 	}catch(e){
-		console.log("error for iss/fhirServiceUrl/launch: " + e.message);
+		sessionStorage.setItem("my_error", e.message);
 	}
   if (server){
     if (!params.server){

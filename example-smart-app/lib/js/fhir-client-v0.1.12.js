@@ -17022,6 +17022,7 @@ function completeCodeFlow(params){
 		console.log("data: " + JSON.stringify(data));
 		console.log("headers: " + JSON.stringify(headers));
 		console.log("params: " + JSON.stringify(params));
+		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
 	}

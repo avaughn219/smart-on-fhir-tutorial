@@ -17387,7 +17387,7 @@ BBClient.authorize = function(params, errback){
 
   var server = urlParam("iss") || urlParam("fhirServiceUrl");
 	try{
-	    setTimeout(function handle(iss, url, launch, params) {
+	    window.setTimeout(function handle(iss, url, launch, params) {
 	      console.log("iss: " + iss);
 	      console.log("fhirServiceUrl: " + url);
 	      console.log("launch: " + launch);

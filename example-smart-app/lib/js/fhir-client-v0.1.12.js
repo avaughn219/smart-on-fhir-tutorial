@@ -17019,6 +17019,7 @@ function completeCodeFlow(params){
     data['client_id'] = state.client.client_id;
   }
 	try{
+		console.log("query params?: " + window.location.search);
 		console.log("state: " + JSON.stringify(state));
 		console.log("data: " + JSON.stringify(data));
 		console.log("headers: " + JSON.stringify(headers));

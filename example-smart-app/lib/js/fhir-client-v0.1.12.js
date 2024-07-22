@@ -17024,6 +17024,11 @@ function completeCodeFlow(params){
 		console.log("data: " + JSON.stringify(data));
 		console.log("headers: " + JSON.stringify(headers));
 		console.log("params: " + JSON.stringify(params));
+		console.log('from provider method');
+		console.log('iss: ' + window.my_iss);
+		console.log('fhirServiceUrl: ' + window.my_fhirServiceUrl);
+		console.log('launch: '+ window.my_launch);
+		console.log('my params: ' + window.my_params);
 		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
@@ -17387,6 +17392,10 @@ BBClient.authorize = function(params, errback){
 
   var server = urlParam("iss") || urlParam("fhirServiceUrl");
 	try{
+		window.my_iss = urlParam("iss");
+		window.my_fhirServiceUrl = urlParam("fhirServiceUrl");
+		window.my_launch = urlParam("launch");
+		window.my_params = location.search.substr(1);
 	      console.log("iss: " + urlParam("iss"));
 	      console.log("fhirServiceUrl: " + urlParam("fhirServiceUrl"));
 	      console.log("launch: " + urlParam("launch"));

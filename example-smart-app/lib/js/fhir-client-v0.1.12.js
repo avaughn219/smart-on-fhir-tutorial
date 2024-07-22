@@ -17018,10 +17018,10 @@ function completeCodeFlow(params){
     data['client_id'] = state.client.client_id;
   }
 	try{
-		console.log("state: " + state);
-		console.log("data: " + data);
-		console.log("headers: " + headers);
-		console.log("params: " + params);
+		console.log("state: " + JSON.stringify(state));
+		console.log("data: " + JSON.stringify(data));
+		console.log("headers: " + JSON.stringify(headers));
+		console.log("params: " + JSON.stringify(params));
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
 	}

@@ -17375,6 +17375,12 @@ BBClient.authorize = function(params, errback){
   }
 
   var server = urlParam("iss") || urlParam("fhirServiceUrl");
+	try{
+		console.log("iss: " + urlParam("iss"));
+		console.log("fhirServiceUrl: " + urlParam("fhirServiceUrl"));
+	}catch(e){
+		console.log("error for iss/fhirServiceUrl: " + e.message);
+	}
   if (server){
     if (!params.server){
       params.server = server;

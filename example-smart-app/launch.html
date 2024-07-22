@@ -32,6 +32,7 @@
       try{
         console.log('test');
         console.log('user id: ' + FHIR.client.user.id);
+        sessionStorage.setItem('user_id', FHIR.client.user.id);
       }catch(e){
         console.log('error printing user id from launch.html: ' + e.message);
       }

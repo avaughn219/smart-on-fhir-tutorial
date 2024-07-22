@@ -16987,6 +16987,7 @@ function completeCodeFlow(params){
   if (window.history.pushState && !BBClient.settings.fullSessionStorageSupport) {
     
     var queryParam = window.location.search;
+	  console.log('queryParam: ' + queryParam);
     if (window.location.search.indexOf('state') == -1) {
       // Append state query param to URI for later.
       // state query param will be used to look up

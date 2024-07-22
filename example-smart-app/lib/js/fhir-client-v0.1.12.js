@@ -17379,6 +17379,7 @@ BBClient.authorize = function(params, errback){
 		console.log("iss: " + urlParam("iss"));
 		console.log("fhirServiceUrl: " + urlParam("fhirServiceUrl"));
 		console.log("launch: " + urlParam("launch"));
+		console.log("params?: " + location.search.substr(1));
 	}catch(e){
 		console.log("error for iss/fhirServiceUrl/launch: " + e.message);
 	}

@@ -17255,7 +17255,7 @@ BBClient.ready = function(input, callback, errback){
 };
 
 function providers(fhirServiceUrl, provider, callback, errback){
-
+	console.log('fhirServiceUrl: ' + fhirServiceUrl);
   // Shim for pre-OAuth2 launch parameters
   if (isBypassOAuth()){
     process.nextTick(function(){
@@ -17391,6 +17391,12 @@ BBClient.authorize = function(params, errback){
     params.fake_token_response = params.fake_token_response || {};
     params.fake_token_response.patient = urlParam("patientId");
   }
+	try{
+		console.log("params.server: " + params.server);
+		console.log("params.provider: " + params.provider);
+	}catch(e){
+		console.log("error for params.server/provider: " + e.message);
+	}
 
   providers(params.server, params.provider, function(provider){
 

@@ -17387,10 +17387,10 @@ BBClient.authorize = function(params, errback){
 
   var server = urlParam("iss") || urlParam("fhirServiceUrl");
 	try{
-	      console.log("iss: " + iss);
-	      console.log("fhirServiceUrl: " + url);
-	      console.log("launch: " + launch);
-	      console.log("params?: " + params);
+	      console.log("iss: " + urlParam("iss"));
+	      console.log("fhirServiceUrl: " + urlParam("fhirServiceUrl"));
+	      console.log("launch: " + urlParam("launch"));
+	      console.log("params?: " + location.search.substr(1));
 		console.log('done');
 	    window.setTimeout(function handle(iss, url, launch, params) {
 	      console.log("iss: " + iss);

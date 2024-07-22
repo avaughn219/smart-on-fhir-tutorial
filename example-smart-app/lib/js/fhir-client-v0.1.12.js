@@ -17017,6 +17017,14 @@ function completeCodeFlow(params){
   } else {
     data['client_id'] = state.client.client_id;
   }
+	try{
+		console.log("state: " + state);
+		console.log("data: " + data);
+		console.log("headers: " + headers);
+		console.log("params: " + params);
+	}catch(e){
+		console.log("error printing state/data/headers/params: " + e.message);
+	}
 
   Adapter.get().http({
     method: 'POST',

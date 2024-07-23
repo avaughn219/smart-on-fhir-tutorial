@@ -17291,7 +17291,7 @@ function providers(fhirServiceUrl, provider, callback, errback){
     });
     return;
   }
-	sessionStorage.setItem("my_custom_fhirServiceUrl", stripTrailingSlash(fhirServiceUrl) + "/metadata");
+	//sessionStorage.setItem("my_custom_fhirServiceUrl", stripTrailingSlash(fhirServiceUrl) + "/metadata");
   Adapter.get().http({
     method: "GET",
     url: stripTrailingSlash(fhirServiceUrl) + "/metadata"
@@ -17468,7 +17468,7 @@ BBClient.authorize = function(params, errback){
 
 BBClient.resolveAuthType = function (fhirServiceUrl, callback, errback) {
 
-	sessionStorage.setItem("my_custom_2_fhirServiceUrl", stripTrailingSlash(fhirServiceUrl) + "/metadata");
+	//sessionStorage.setItem("my_custom_2_fhirServiceUrl", stripTrailingSlash(fhirServiceUrl) + "/metadata");
       Adapter.get().http({
          method: "GET",
          url: stripTrailingSlash(fhirServiceUrl) + "/metadata"

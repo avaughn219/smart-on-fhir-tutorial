@@ -17027,6 +17027,8 @@ function completeCodeFlow(params){
 		console.log('from provider method');
 		console.log('iss: ' + sessionStorage.getItem("my_iss"));
 		console.log('fhirServiceUrl: ' + sessionStorage.getItem("my_fhirServiceUrl"));
+		console.log('fhirServiceUrl2: ' + sessionStorage.getIem("my_custom_fhirServiceUrl");
+		console.log('fhirServiceUrl3: ' + sessionStorage.getIem("my_custom_2_fhirServiceUrl");
 		console.log('launch: '+ sessionStorage.getItem("my_launch"));
 		console.log('my params: ' + sessionStorage.getItem("my_params"));
 		console.log('user id: ' + sessionStorage.getItem('user_id');
@@ -17289,7 +17291,7 @@ function providers(fhirServiceUrl, provider, callback, errback){
     });
     return;
   }
-
+	sessionStorage.setItem("my_custom_fhirServiceUrl", stripTrailingSlash(fhirServiceUrl) + "/metadata");
   Adapter.get().http({
     method: "GET",
     url: stripTrailingSlash(fhirServiceUrl) + "/metadata"
@@ -17466,6 +17468,7 @@ BBClient.authorize = function(params, errback){
 
 BBClient.resolveAuthType = function (fhirServiceUrl, callback, errback) {
 
+	sessionStorage.setItem("my_custom_2_fhirServiceUrl", stripTrailingSlash(fhirServiceUrl) + "/metadata");
       Adapter.get().http({
          method: "GET",
          url: stripTrailingSlash(fhirServiceUrl) + "/metadata"

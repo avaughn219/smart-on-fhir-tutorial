@@ -17027,8 +17027,8 @@ function completeCodeFlow(params){
 		console.log('from provider method');
 		console.log('iss: ' + sessionStorage.getItem("my_iss"));
 		console.log('fhirServiceUrl: ' + sessionStorage.getItem("my_fhirServiceUrl"));
-		console.log('fhirServiceUrl2: ' + sessionStorage.getIem("my_custom_fhirServiceUrl"));
-		console.log('fhirServiceUrl3: ' + sessionStorage.getIem("my_custom_2_fhirServiceUrl"));
+		console.log('fhirServiceUrl2: ' + sessionStorage.getItem("my_custom_fhirServiceUrl"));
+		console.log('fhirServiceUrl3: ' + sessionStorage.getItem("my_custom_2_fhirServiceUrl"));
 		console.log('launch: '+ sessionStorage.getItem("my_launch"));
 		console.log('my params: ' + sessionStorage.getItem("my_params"));
 		console.log('user id: ' + sessionStorage.getItem('user_id'));

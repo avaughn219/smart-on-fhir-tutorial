@@ -16933,6 +16933,7 @@ function stripTrailingSlash(str) {
 * @return object JSON tokenResponse
 */
 function getPreviousToken(){
+	sessionStorage.setItem("my_custom_state_3", urlParam('state'));
   var token;
   
   if (BBClient.settings.fullSessionStorageSupport) {
@@ -16974,6 +16975,9 @@ function completeCodeFlow(params){
       state: urlParam('state')
     };
   }
+
+	sessionStorage.setItem("my_custom_state_1", urlParam('state'));
+	sessionStorage.setItem("my_custome_code_1", urlParam('code'));
   
   var ret = Adapter.get().defer();
   var state = JSON.parse(sessionStorage[params.state]);
@@ -17033,6 +17037,11 @@ function completeCodeFlow(params){
 		console.log('launch: '+ sessionStorage.getItem("my_launch"));
 		console.log('my params: ' + sessionStorage.getItem("my_params"));
 		console.log('user id: ' + sessionStorage.getItem('my_custom_user_id'));
+		console.log("state 1: " + sessionStorage.getItem("my_custom_state_1"));
+		console.log("state 2: " + sessionStorage.getItem("my_custom_state_2"));
+		console.log("state 3: " + sessionStorage.getItem("my_custom_state_3"));
+		console.log("code 1: " + sessionStorage.getItem("my_custome_code_1"));
+		console.log("code 2: " + sessionStorage.getItem("my_custome_code_2"));
 		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
@@ -17160,6 +17169,7 @@ BBClient.settings = {
 * @return boolean
 */
 function validTokenResponse() {
+	sessionStorage.setItem("my_custom_state_2", urlParam('state'));
   if (BBClient.settings.fullSessionStorageSupport && sessionStorage.tokenResponse) {
     return true;
   } else {
@@ -17189,6 +17199,8 @@ BBClient.ready = function(input, callback, errback){
   // decide between token flow (implicit grant) and code flow (authorization code grant)
   var isCode = urlParam('code') || (args.input && args.input.code);
 
+	sessionStorage.setItem('my_custome_code_2', urlParam('code'));
+	
   var accessTokenResolver = null;
 
   if (isFakeOAuthToken()) {

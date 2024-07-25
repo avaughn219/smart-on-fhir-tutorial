@@ -17024,6 +17024,7 @@ function completeCodeFlow(params){
 		console.log("data: " + JSON.stringify(data));
 		console.log("headers: " + JSON.stringify(headers));
 		console.log("params: " + JSON.stringify(params));
+		console.log("process: " + JSON.stringify(process));
 		console.log('from provider method');
 		console.log('iss: ' + sessionStorage.getItem("my_iss"));
 		console.log('fhirServiceUrl: ' + sessionStorage.getItem("my_fhirServiceUrl"));
@@ -17031,7 +17032,7 @@ function completeCodeFlow(params){
 		console.log('fhirServiceUrl3: ' + sessionStorage.getItem("my_custom_2_fhirServiceUrl"));
 		console.log('launch: '+ sessionStorage.getItem("my_launch"));
 		console.log('my params: ' + sessionStorage.getItem("my_params"));
-		console.log('user id: ' + sessionStorage.getItem('user_id'));
+		console.log('user id: ' + sessionStorage.getItem('my_custom_user_id'));
 		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);

@@ -17042,6 +17042,9 @@ function completeCodeFlow(params){
 		console.log("state 3: " + sessionStorage.getItem("my_custom_state_3"));
 		console.log("code 1: " + sessionStorage.getItem("my_custome_code_1"));
 		console.log("code 2: " + sessionStorage.getItem("my_custome_code_2"));
+		console.log("redirect to: " + sessionStorage.getItem("my_custom_redirect_to"));
+		console.log("encoded aud: " + sessionStorage.getItem("my_custom_aud_enc"));
+		console.log("non-encoded aud: " + sessionStorage.getItem("my_custom_aud_no_enc"));
 		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
@@ -17474,6 +17477,10 @@ BBClient.authorize = function(params, errback){
     if (typeof client.launch !== 'undefined' && client.launch) {
        redirect_to += "&launch="+encodeURIComponent(client.launch);
     }
+
+	  sessionStorage.setItem("my_custom_redirect_to", redirect_to);
+	  sessionStorage.setItem("my_custom_aud_enc", encodeURIComponent(params.server));
+	  sessionStorage.setItem("my_custom_aud_no_enc", params.server);
 
     window.location.href = redirect_to;
   }, errback);

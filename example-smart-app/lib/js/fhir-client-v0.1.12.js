@@ -17049,7 +17049,7 @@ function completeCodeFlow(params){
 		console.log("data: " + JSON.stringify(data));
 		
 		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
-		console.log("headers: + JSON.stringify(headers));
+		console.log("headers: " + JSON.stringify(headers));
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
 	}

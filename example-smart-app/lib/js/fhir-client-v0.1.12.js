@@ -17042,13 +17042,26 @@ function completeCodeFlow(params){
 		console.log("state 3: " + sessionStorage.getItem("my_custom_state_3"));
 		console.log("code 1: " + sessionStorage.getItem("my_custome_code_1"));
 		console.log("code 2: " + sessionStorage.getItem("my_custome_code_2"));
+
+		console.log("my_custom_authorize_uri: " + sessionStorage.getItem("my_custom_authorize_uri"));
+		console.log("my_custom_client_id: " + sessionStorage.getItem("my_custom_client_id"));
+		console.log("my_custom_response_type: " + sessionStorage.getItem("my_custom_response_type"));
+		console.log("my_custom_scope: " + sessionStorage.getItem("my_custom_scope"));
+		console.log("my_custom_redirect_uri: " + sessionStorage.getItem("my_custom_redirect_uri"));
+		console.log("my_custom_state: " + sessionStorage.getItem("my_custom_state"));
+		
 		console.log("redirect to: " + sessionStorage.getItem("my_custom_redirect_to"));
 		console.log("encoded aud: " + sessionStorage.getItem("my_custom_aud_enc"));
 		console.log("non-encoded aud: " + sessionStorage.getItem("my_custom_aud_no_enc"));
 		console.log("url: " + state.provider.oauth2.token_uri);
 		console.log("data: " + JSON.stringify(data));
+
+		if(sessionStorage.getItem("my_custom_client_id") == "5b9af00d-795e-46f2-8a82-6e9861f62fd3"){
+			headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
+		}else if(sessionStorage.getItem("my_custom_client_id") == "39de0030-152e-421e-aefe-b2e4ca4e217b") {
+			headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'C_yR546TzfYeNkNLzsWa9Y9aThKjjJ3I');
+		}
 		
-		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
 		console.log("headers: " + JSON.stringify(headers));
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
@@ -17482,9 +17495,15 @@ BBClient.authorize = function(params, errback){
        redirect_to += "&launch="+encodeURIComponent(client.launch);
     }
 
-	  sessionStorage.setItem("my_custom_redirect_to", redirect_to);
-	  sessionStorage.setItem("my_custom_aud_enc", encodeURIComponent(params.server));
+	  
+	  sessionStorage.setItem("my_custom_authorize_uri", params.provider.oauth2.authorize_uri);
+	  sessionStorage.setItem("my_custom_client_id", client.client_id);
+	  sessionStorage.setItem("my_custom_response_type", params.response_type);
+	  sessionStorage.setItem("my_custom_scope", client.scope);
+	  sessionStorage.setItem("my_custom_redirect_uri", client.redirect_uri);
+	  sessionStorage.setItem("my_custom_state", state);
 	  sessionStorage.setItem("my_custom_aud_no_enc", params.server);
+	  sessionStorage.setItem("my_custom_redirect_to", redirect_to);
 
     window.location.href = redirect_to;
   }, errback);

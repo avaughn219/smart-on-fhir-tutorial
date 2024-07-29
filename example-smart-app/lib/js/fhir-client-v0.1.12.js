@@ -17045,7 +17045,11 @@ function completeCodeFlow(params){
 		console.log("redirect to: " + sessionStorage.getItem("my_custom_redirect_to"));
 		console.log("encoded aud: " + sessionStorage.getItem("my_custom_aud_enc"));
 		console.log("non-encoded aud: " + sessionStorage.getItem("my_custom_aud_no_enc"));
+		console.log("url: " + state.provider.oauth2.token_uri);
+		console.log("data: " + JSON.stringify(data));
+		
 		headers['Authorization'] = 'Basic ' + btoa(state.client.client_id + ':' + 'ftBPnwobT1nHslmP2aHoBrc2UclYBt58');
+		console.log("headers: + JSON.stringify(headers));
 	}catch(e){
 		console.log("error printing state/data/headers/params: " + e.message);
 	}
